@@ -62,11 +62,12 @@ function recurSMA (datas, idx) {
 // Assume the cDate is current index array
 // Assume that pDate is previous date length from current date
 var prevSMA = function doProcess (datas, cDate, pDate) {
-    if(cDate < 4){  // todo: it sohuld not hard code
-        return 0;
+    var _temp = 0;
+    for (var i = cDate; i > (cDate - pDate); i--) {
+        _temp += datas[i].price;
     }
-    
-    return datas[cDate].price + ( doProcess (datas, cDate-1, pDate) );
+
+    return _temp / pDate;
 }
 
 console.log(prevSMA(datas, 6, 2));
