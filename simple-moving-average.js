@@ -52,4 +52,21 @@ function recurSMA (datas, idx) {
     return datas[idx].price + ( recurSMA(datas, idx-1) ); // 98
 }
 
-console.log( recurSMA(datas, datas.length-1) / datas.length);
+// console.log( recurSMA(datas, datas.length-1) / datas.length);
+
+/**
+ * As a user need the simple-moving-average function
+ * they able to specific current date and specific how many previous date
+ */
+
+// Assume the cDate is current index array
+// Assume that pDate is previous date length from current date
+var prevSMA = function doProcess (datas, cDate, pDate) {
+    if(cDate < 4){  // todo: it sohuld not hard code
+        return 0;
+    }
+    
+    return datas[cDate].price + ( doProcess (datas, cDate-1, pDate) );
+}
+
+console.log(prevSMA(datas, 6, 2));
