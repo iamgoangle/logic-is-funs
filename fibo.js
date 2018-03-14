@@ -1,13 +1,9 @@
-function fibo(num) {
-	while (num > 0) {
-  	if (num === 1) {
-      return 1;
-    }
-    
-    return fibo(num - 2) + fibo(num - 1);
+function fibo(n) {
+	if (n < 2) {
+    return 1;
   }
-  
-  return 0;
+    
+  return fibo(n - 1) + fibo(n - 2);
 }
 
-alert(fibo(5));
+console.log(fibo(5));
